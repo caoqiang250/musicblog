@@ -760,7 +760,7 @@
 			};
 			
 			/******************************************************************/
-			
+			//谷歌浏览器策略 禁止自动播放音频，需要用户点击后触发
 			this.createAudioPlayer=function()
 			{
 				if($this.audio.length==0) 
@@ -775,6 +775,7 @@
 				{
 					ready:function() 
 					{
+						console.log($this.audio[0])
 						$(this).jPlayer('setMedia',$this.audio[0]);
 						
 						var click=document.ontouchstart===undefined ? 'click' : 'touchstart';
