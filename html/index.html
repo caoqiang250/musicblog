@@ -1,0 +1,205 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+	<head>
+
+		<title>Nostalgia - Responsive Minimal Portfolio Template</title>
+		<meta name="keywords" content="clean, creative, full screen, fullscreen, jquery, minimal, minimalistic, modern, personal, portfolio, responsive, retro, template, vintage, yellow" />
+		<meta name="description" content="Nostalgia is a HTML portfolio template - personal or corporate, based on full-screen slider and sliding pages. The template is maintained in a minimalist, contrasting style. Background images kept in retro tones contrast with modern minimalist content." />		
+		
+		<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+		
+		<link rel="stylesheet" type="text/css" href="style/jquery.qtip.css"/>
+		<link rel="stylesheet" type="text/css" href="style/jquery.jScrollPane.css"/>
+		<link rel="stylesheet" type="text/css" href="style/jquery-ui.min.css"/>
+		<link rel="stylesheet" type="text/css" href="style/supersized/supersized.css"/>
+		<link rel="stylesheet" type="text/css" href="style/fancybox/jquery.fancybox.css"/> 
+		<link rel="stylesheet" type="text/css" href="style/fancybox/helpers/jquery.fancybox-buttons.css"/> 
+		<link rel="stylesheet" type="text/css" href="style/base.css"/> 
+		<link rel="stylesheet" type="text/css" href="style/page.css"/> 
+		
+		<link rel="stylesheet" type="text/css" media="screen and (max-width:550px)" href="style/responsive-0-550.css"/> 
+		<link rel="stylesheet" type="text/css" media="screen and (min-width:480px) and (max-width:550px)" href="style/responsive-480-550.css"/> 
+		<link rel="stylesheet" type="text/css" media="screen and (max-width:479px)" href="style/responsive-0-479.css"/> 
+		<link rel="stylesheet" type="text/css" media="screen and (max-height:510px)" href="style/responsive-height-0-510.css"/> 
+		
+		<!-- <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Voces"/>
+		<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Dosis:400,300,200,500,600,700,800" />
+		<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Aldrich"/> -->
+
+		<script type="text/javascript">
+			var config={"about.html":{"title":"About - Nostalgia - Responsive Minimal Portfolio Template","keywords":"","description":""},"services.html":{"title":"Services - Nostalgia - Responsive Minimal Portfolio Template","keywords":"","description":""},"portfolio.html":{"title":"Portfolio - Nostalgia - Responsive Minimal Portfolio Template","keywords":"","description":""},"blog.html":{"title":"Blog - Nostalgia - Responsive Minimal Portfolio Template","keywords":"","description":""},"contact.html":{"title":"Contact - Nostalgia - Responsive Minimal Portfolio Template","keywords":"","description":""},"post.html":{"title":"Post - Nostalgia - Responsive Minimal Portfolio Template","keywords":"","description":""}};
+			var configDefault={"title":"Nostalgia - Responsive Minimal Portfolio Template","keywords":"clean, creative, full screen, fullscreen, jquery, minimal, minimalistic, modern, personal, portfolio, responsive, retro, template, vintage, yellow","description":"Nostalgia is a HTML portfolio template - personal or corporate, based on full-screen slider and sliding pages. The template is maintained in a minimalist, contrasting style. Background images kept in retro tones contrast with modern minimalist content."};
+			var mainURL='/Nostalgia/Template/html/';
+		</script>
+		
+		<script type="text/javascript" src="script/jquery.min.js"></script>
+		<script type="text/javascript" src="script/jquery-migrate.min.js"></script>
+
+	</head>
+
+	<body>
+		
+		<div id="nostalgia">
+			
+			<!-- Navigation -->
+			<div id="nostalgia-navigation">
+
+				<div id="nostalgia-navigation-menu">
+
+					<!-- Menu -->
+					<ul>
+						<li><a href="#!about.html">关于宝宝</a></li>
+						<li><a href="#!portfolio.html">照片墙</a></li>
+						<li><a href="#!blog.html">博客</a></li>
+					</ul>
+					<!-- /Menu -->
+					
+					<!-- <a href="#" id="nostalgia-navigation-prev-button"></a>
+					<a href="#" id="nostalgia-navigation-next-button"></a> -->
+					<a href="#" class="audio-player music-off"></a>
+					<a href="#!main" id="nostalgia-navigation-close-button"></a>
+					
+				</div>
+
+				<!-- Name box -->
+				<div id="nostalgia-navigation-name-box">
+					<span>这里</span>
+					<span>开始吧</span>
+				</div>
+				<!-- /Name box -->
+				
+				<div id="nostalgia-navigation-click-here-box">
+					<img src="image/click_here_arrow.png">
+				</div>
+
+			</div>
+			<!-- /Navigation -->
+			
+			<!-- Tab -->
+			<div id="nostalgia-tab">
+				
+				<!-- Tab icon -->
+				<div id="nostalgia-tab-icon"></div>
+				<!-- /Tab icon -->
+				
+				<!-- Content -->
+				<div id="nostalgia-tab-content">
+					
+					<form name="nostalgia-tab-content-menu" id="nostalgia-tab-content-menu" method="post" action="">
+						
+						<div>
+							
+							<select id="nostalgia-tab-content-menu-select" name="nostalgia-tab-content-menu-select">
+								<option value="#!about.html">About</option>
+								<option value="#!portfolio.html">Portfolio</option>
+								<option value="#!blog.html">Blog</option>
+								<option value="#!main">- Close -</option>
+							</select>
+							
+						</div>
+						
+					</form>
+
+					<!-- Scroll section -->
+					<div id="nostalgia-tab-content-scroll">
+
+						<div id="nostalgia-tab-content-page">
+													</div>
+
+					</div>
+					<!-- /Scroll section -->
+					
+					<!-- Footer -->
+					<div id="nostalgia-tab-footer" class="clear-fix">
+						
+						<ul class="no-list social-list">
+							<li><a class="social-list-facebook" href="#"></a></li>
+							<li><a class="social-list-twitter" href="#"></a></li>
+							<li><a class="social-list-google" href="#"></a></li>
+						</ul>
+						
+						<div class="nostalgia-tab-footer-caption">
+						
+							<span class="float-left"><a href="#">Please feel free to share my works</a></span>
+							<span class="float-right"><a href="#">Copyright Keith Douglas</a></span>
+						
+						</div>
+
+					</div>
+					<!-- /Footer -->
+
+				</div>
+				<!-- /Content -->
+						
+			</div>
+			<!-- /Tab -->
+			
+			<!-- Media control -->
+			<div id="media-control">
+
+				<div id="slidecaption-wrapper">
+					<div id="slidecaption"></div>
+				</div>
+
+				<a href="#" id="nextslide"></a>
+				<a href="#" id="prevslide"></a>
+				<a href="#" class="audio-player music-off"></a>
+
+			</div>
+			<!-- /Media control -->
+
+		</div>
+		
+		<!-- Preloader -->
+		<div id="start-preloader">
+			<div>
+				<p>Loading images ...</p>
+			</div>
+		</div>
+		<!-- /Preloader -->
+		
+		<!-- Background overlay -->
+		<div id="background-overlay">
+			<div class="background-overlay-1"></div>
+		</div>
+		<!-- /Background overlay -->
+		
+		<!-- Nostalgia hidden fileds -->
+		<div>
+			<input type="hidden" id="nostalgiaRequest" name="nostalgiaRequest" value="" />
+			<input type="hidden" id="nostalgiaRequestType" name="nostalgiaRequestType" value="1" />
+		</div>
+		<!-- Nostalgia hidden fileds -->
+		
+		<!-- JPlayer -->
+		<div id="jPlayer"></div>
+		<!-- /JPlayer -->
+
+		<script type="text/javascript" src="script/jquery-ui.min.js"></script>
+		<script type="text/javascript" src="script/jquery.easing.js"></script>
+		<script type="text/javascript" src="script/jquery.blockUI.js"></script>
+		<script type="text/javascript" src="script/jquery.qtip.min.js"></script>
+		<script type="text/javascript" src="script/jquery.ba-bqq.min.js"></script>
+		<script type="text/javascript" src="script/jquery.jplayer.min.js"></script>
+		<script type="text/javascript" src="script/jquery.mousewheel.min.js"></script>
+		<script type="text/javascript" src="script/jquery.supersized.min.js"></script>
+		<script type="text/javascript" src="script/jquery.jScrollPane.min.js"></script>
+		<script type="text/javascript" src="script/jquery.supersized.shutter.min.js"></script>
+		<script type="text/javascript" src="script/jquery.carouFredSel.packed.js"></script>
+		
+		<script type="text/javascript" src="script/jquery.fancybox.js"></script>
+		<script type="text/javascript" src="script/jquery.fancybox-media.js"></script>
+		<script type="text/javascript" src="script/jquery.fancybox-buttons.js"></script>
+		
+        <!-- <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>     -->
+
+		<script type="text/javascript" src="script/script.js"></script>
+		<script type="text/javascript" src="script/nostalgia.js"></script>
+		<script type="text/javascript" src="script/main.js"></script>
+		
+	</body>
+
+</html>
