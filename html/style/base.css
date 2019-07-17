@@ -16,6 +16,10 @@ body
 	min-width:550px;
 }
 
+.clear-right{
+	clear: right;
+}
+
 body,input,textarea,a,
 .nostalgia-accordion.ui-widget
 {
@@ -123,9 +127,9 @@ a.image-link
 /******************************************************************************/
 
 .jspTrack,
-#nostalgia-tab,
+/* #nostalgia-tab, */
 #start-preloader ul li,
-#nostalgia-tab-content,
+/* #nostalgia-tab-content, */
 .audio-player:hover,
 #media-control #nextslide:hover,
 #media-control #prevslide:hover,
@@ -137,6 +141,14 @@ a.image-link
 #nostalgia-navigation-next-button:hover
 {
 	background-color:#FFC000;
+	
+}
+
+#nostalgia-tab{
+	background: url('../image/background_about.jpg') no-repeat;
+	background-size: cover;
+	/* background-color:rgba(255,192,0,0.9); */
+	/* background: url('../image/background_about.jpg') rgba(255,192,0,0.9); */
 }
 
 .jspDrag,
@@ -1084,7 +1096,7 @@ input.button
 			min-width:520px;
 			position:absolute;
 			padding:0px 0px 0px 30px;
-			background-color:rgba(255,192,0,0.9);
+			/* background-color:rgba(255,192,0,0.9); */
 			-ms-filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#E5FFC000,endColorstr=#E5FFC000);
 			filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#E5FFC000,endColorstr=#E5FFC000);
 		}
