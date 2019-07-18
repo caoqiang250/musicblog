@@ -34,7 +34,8 @@
  *     });
  *
  *  Supports:
- *
+ *      youku 
+ * 			http://player.youku.com/embed/XNDEyNDIwNjQ1Ng==
  *      Youtube
  *          http://www.youtube.com/watch?v=opj24KnzrWo
  *          http://www.youtube.com/embed/opj24KnzrWo
@@ -51,7 +52,7 @@
  *      Dailymotion
  *          http://www.dailymotion.com/video/xoytqh_dr-seuss-the-lorax-premiere_people
  *      Twitvid
- *          http://twitvid.com/QY7MD
+ *          http://twitvid.com/QYM7D
  *      Twitpic
  *          http://twitpic.com/7p93st
  *      Instagram
@@ -88,6 +89,20 @@
 	//Add helper object
 	F.helpers.media = {
 		defaults : {
+			youku : {
+				matcher : /youku\.com\/embed\/([a-zA-Z0-9_\-\?\=]+)/i,
+				params  : {
+					autoplay    : 1,
+					autohide    : 1,
+					fs          : 1,
+					rel         : 0,
+					hd          : 1,
+					wmode       : 'opaque',
+					enablejsapi : 1
+				},
+				type : 'iframe',
+				url  : '//player.youku.com/embed/$1'
+			},
 			youtube : {
 				matcher : /(youtube\.com|youtu\.be|youtube-nocookie\.com)\/(watch\?v=|v\/|u\/|embed\/?)?(videoseries\?list=(.*)|[\w-]{11}|\?listType=(.*)&list=(.*)).*/i,
 				params  : {

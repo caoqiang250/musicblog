@@ -81,10 +81,36 @@ $('.fancybox-image').fancybox(
 });
 
 /******************************************************************************/
-/*	Fancybox for youtube videos												  */
+/*	Fancybox for youku videos												  */
 /******************************************************************************/
 
 var playerPaused=false;
+
+helpers={title:{type:'inside'}};
+helpers.media={};
+
+$('.fancybox-video-youku').fancybox(
+{
+	helpers					:	helpers,
+	beforeShow				:	function()
+	{
+		this.title=$(this.element).nextAll('.fancybox-subtitle').text();
+		
+		if($('.audio-player').hasClass('music-on'))
+		{
+			playerPaused=true;
+			$('#jPlayer').jPlayer('pause');
+		}
+		
+	},
+	afterClose				:	function()
+	{
+		if((playerPaused) && (!$('.audio-player').hasClass('music-pause-user'))) $('#jPlayer').jPlayer('play');
+	}
+});
+/******************************************************************************/
+/*	Fancybox for youtube videos												  */
+/******************************************************************************/
 
 helpers={title:{type:'inside'}};
 helpers.media={};
