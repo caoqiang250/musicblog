@@ -1288,6 +1288,10 @@ input.button
 		bottom:0%;
 	}
 
+	#calendarBox{
+		display: none !important;
+	}
+
 	#nostalgia-navigation
 	{
 		bottom:37px;
