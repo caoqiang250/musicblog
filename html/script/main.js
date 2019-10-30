@@ -15,7 +15,7 @@
         var slide=
 		[
 			{image:'media/image/background/02.jpg',title:'<span class="supersized-caption-title">如果有来生<br/>By 傻强</span><br/><br/>'},
-			{image:'media/image/background/01.jpg',title:'<span class="supersized-caption-title">把我唱给你听<br/>By 傻强</span><br/><br/>'},
+			{image:'media/image/background/01.jpg',title:'<span class="supersized-caption-title">想把我唱给你听<br/>By 傻强</span><br/><br/>'},
 			{image:'media/image/background/03.jpg',title:'<span class="supersized-caption-title">我要你<br/>By 傻强</span><br/><br/>'},
 			{image:'media/image/background/04.jpg',title:'<span class="supersized-caption-title">天黑黑<br/>By 傻强</span><br/><br/>'},
 			{image:'media/image/background/05.jpg',title:'<span class="supersized-caption-title">平凡之路<br/>By 傻强</span><br/><br/>'},
@@ -25,7 +25,7 @@
 		var audio=
 		[
 			{title: '如果有来生',mp3:'media/audio/2.如果有来生.mp3'},
-			{title: '把我唱给你听',mp3:'media/audio/1.把我唱给你听.m4a'},
+			{title: '想把我唱给你听',mp3:'media/audio/1.想把我唱给你听.m4a'},
 			{title: '我要你',mp3:'media/audio/3.我要你.m4a'},
 			{title: '天黑黑',mp3:'media/audio/4.天黑黑.m4a'},
 			{title: '平凡之路',mp3:'media/audio/5.平凡之路.m4a'},

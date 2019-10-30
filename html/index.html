@@ -24,6 +24,10 @@
 		<link rel="stylesheet" type="text/css" media="screen and (min-width:480px) and (max-width:550px)" href="style/responsive-480-550.css"/> 
 		<link rel="stylesheet" type="text/css" media="screen and (max-width:479px)" href="style/responsive-0-479.css"/> 
 		<link rel="stylesheet" type="text/css" media="screen and (max-height:510px)" href="style/responsive-height-0-510.css"/> 
+
+		<!-- 日历插件 -->
+		<link rel="stylesheet" type="text/css" href="style/jquery.e-calendar.css"/> 
+		<link rel="stylesheet" type="text/css" href="style/layui.css"/> 
 		
 		<!-- <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Voces"/>
 		<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Dosis:400,300,200,500,600,700,800" />
@@ -145,6 +149,18 @@
 						
 			</div>
 			<!-- /Tab -->
+			<!-- 日历插件 -->
+			<div id="calendarBox">
+				<div id="notice">
+					<span style="position: relative;bottom: 7px;">登记类型：</span>
+					<div style="display:inline-block;width:25px;height:25px;background: linear-gradient(180deg, #808080, #dcdcdc);border-radius: 50%;"></div><span style="position: relative;bottom: 7px;">以往</span>
+					<div style="display:inline-block;width:25px;height:25px;background: linear-gradient(180deg, #ff0000, #ffdcba);border-radius: 50%;"></div><span style="position: relative;bottom: 7px;">当前</span>
+					<div style="display:inline-block;width:25px;height:25px;background: linear-gradient(180deg, #ff2121, #ffe52d);border-radius: 50%;"></div><span style="position: relative;bottom: 7px;">代办</span>
+					<div style="display:inline-block;width:25px;height:25px;background: linear-gradient(180deg, #005aff, #b4d9ff);border-radius: 50%;"></div><span style="position: relative;bottom: 7px;">今日</span>
+				</div>
+			
+				<div id="calendar"></div>
+			  </div>
 			
 			<!-- Media control -->
 			<div id="media-control">
@@ -208,7 +224,10 @@
 		<script type="text/javascript" src="script/script.js"></script>
 		<script type="text/javascript" src="script/nostalgia.js"></script>
 		<script type="text/javascript" src="script/main.js"></script>
-		
+
+		<!-- 日历插件 -->
+		<script type="text/javascript" src="script/jquery.e-calendar.js"></script>
+		<script src="script/layui.js" charset="utf-8"></script>
 	</body>
 
 </html>

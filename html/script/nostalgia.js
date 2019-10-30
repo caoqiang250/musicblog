@@ -71,7 +71,11 @@
 			
 			$this.nostalgiaTabIconWidth=parseInt($('#nostalgia-tab-icon').css('width'));
 			
+			//媒体播放条
 			$this.mediaControl=$('#media-control');
+
+			//日历插件
+			$this.calendarBox=$('#calendarBox');
 
 			$this.nostalgiaTabContentMenuSelect=$('#nostalgia-tab-content-menu-select');
 			
@@ -103,6 +107,9 @@
 				
 				$this.createNostalgiaTabContentMenu();
 
+				//初始化日历插件
+				$this.initcalendarBox();
+
 				$this.createStartPrealoder({complete:function()
 				{	
 					$this.startPreloader.children('div:first').fadeOut(300,function() 
@@ -113,6 +120,7 @@
 							
 							$this.blink($this.nostalgiaNavigationClickHereBox);	
 							$this.showMediaControl(true);
+							$this.showcalendarBox(true);
 
 							$this.nostalgiaNavigationNameBox.bind('click',function() 
 							{
@@ -134,6 +142,27 @@
 						});
 					});
 				}});
+			};
+
+			//初始化日历插件
+			this.initcalendarBox=function(){
+				this.calendarBox.text('111')
+				this.calendarBox.eCalendar({
+					weekDays: ['周日', '周一', '周二', '周三', '周四', '周五', '周六'],
+					months: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'],
+					textArrows: {previous: '<<', next: '>>'},//这里左右箭头图标可套用文字类型图标进行展示
+					eventTitle: '本月登记事项',
+					url: '',
+					events: 
+					[
+						{title: ' - 16:00', description: '年终大会', datetime: new Date(2019, 9, 21, 14)}, //11-代表12月
+						{title: ' - 20:00', description: '公司聚餐', datetime: new Date(2019, 9, 31, 18)},
+						{title: ' - 12:00', description: '文艺汇演', datetime: new Date(2019, 8, 15, 9)},
+						{title: ' - 18:00', description: '临时请假', datetime: new Date(2019, 8, 20, 8)}
+					]
+					,
+					firstDayOfWeek: 0
+				});
 			};
 			
 			/******************************************************************/
@@ -246,6 +275,7 @@
 							{
 								$this.showNavigationClickHereBox(true);
 								$this.showMediaControl(true);
+								$this.showcalendarBox(true);
 								$this.switchSlide();
 								$this.enable=true;
 							}});
@@ -257,6 +287,7 @@
 						{
 							$this.showNavigationClickHereBox(true);
 							$this.showMediaControl(true);
+							$this.showcalendarBox(true);
 							$this.switchSlide();
 							$this.enable=true;
 						}});
@@ -284,6 +315,7 @@
 						{
 							$this.showNavigationMenu(true);
 							$this.showMediaControl(false);
+							$this.showcalendarBox(false);
 
 							$this.open(false,{complete:function() 
 							{
@@ -301,6 +333,7 @@
 					
 					$this.showNavigationMenu(true);
 					$this.showMediaControl(false);
+					$this.showcalendarBox(false);
 
 					$this.open(false,{complete:function() 
 					{
@@ -557,6 +590,7 @@
 			{
 				$this.showNavigationClickHereBox(false);
 				$this.showMediaControl(false);
+				$this.showcalendarBox(false);
 				
 				if($this.getWindowWidth()<$this.breakpoint[1]) 
 				{	
@@ -590,7 +624,7 @@
 
 			/******************************************************************/
 			/******************************************************************/
-
+			//获取页面信息
 			this.getPageProperty=function(key,property)
 			{
 				try
@@ -682,9 +716,16 @@
 			
 			/******************************************************************/
 			
+			//显示媒体播放条
 			this.showMediaControl=function(show)
 			{
 				$this.mediaControl.css('display',(show ? 'block' : 'none'));
+			};
+
+			//显示日历插件
+			this.showcalendarBox=function(show)
+			{
+				$this.calendarBox.css('display',(show ? 'block' : 'none'));
 			};
 			
 			/******************************************************************/
