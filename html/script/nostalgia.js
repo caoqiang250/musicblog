@@ -111,7 +111,7 @@
 				$this.initcalendarBox();
 				// $.ajax({
 				// 	type:'GET',
-				// 	url:'http://localhost/api/memo/getMemoList',
+				// 	url:'/api/memo/getMemoList',
 				// 	dataType:'json',
 				// 	data:{},
 				// 	success:function(data){
@@ -164,7 +164,7 @@
 					months: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'],
 					textArrows: {previous: '<<', next: '>>'},//这里左右箭头图标可套用文字类型图标进行展示
 					eventTitle: '今日提醒',
-					url: 'http://localhost/api/memo/getMemoList',
+					url: '/api/memo/getMemoList',
 					events: events,
 					firstDayOfWeek: 1
 				});
