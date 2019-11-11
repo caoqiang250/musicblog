@@ -109,6 +109,18 @@
 
 				//初始化日历插件
 				$this.initcalendarBox();
+				// $.ajax({
+				// 	type:'GET',
+				// 	url:'http://localhost/api/memo/getMemoList',
+				// 	dataType:'json',
+				// 	data:{},
+				// 	success:function(data){
+				// 		$this.initcalendarBox(data);
+				// 	},
+				// 	error:function(){
+				// 		$this.initcalendarBox([]);
+				// 	}
+				// });
 
 				$this.createStartPrealoder({complete:function()
 				{	
@@ -145,22 +157,15 @@
 			};
 
 			//初始化日历插件
-			this.initcalendarBox=function(){
-				this.calendarBox.text('111')
+			this.initcalendarBox=function(events){
+				console.log('初始化日历');
 				this.calendarBox.eCalendar({
 					weekDays: ['周日','周一', '周二', '周三', '周四', '周五', '周六' ],
 					months: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'],
 					textArrows: {previous: '<<', next: '>>'},//这里左右箭头图标可套用文字类型图标进行展示
-					eventTitle: '本月登记事项',
-					url: '',
-					events: 
-					[
-						{title: ' - 16:00', description: '年终大会', datetime: new Date(2019, 9, 21, 14)}, //11-代表12月
-						{title: ' - 20:00', description: '网站加入日历', datetime: new Date(2019, 9, 31, 18)},
-						{title: ' - 12:00', description: '公司聚餐-带家属', datetime: new Date(2019, 10, 1, 5)},
-						{title: ' - 18:00', description: '临时请假', datetime: new Date(2019, 8, 20, 8)}
-					]
-					,
+					eventTitle: '今日提醒',
+					url: 'http://localhost/api/memo/getMemoList',
+					events: events,
 					firstDayOfWeek: 1
 				});
 			};

@@ -91,6 +91,10 @@
     padding-top: 2%;
 }
 
+.can-click{
+    cursor: pointer;
+}
+
 .c-next {
     width: 12.5%;
     height: 12%;

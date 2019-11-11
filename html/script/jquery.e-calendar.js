@@ -19,6 +19,7 @@
         var dYear = adYear;
         var instance = object;
 
+
         var settings = $.extend({}, $.fn.eCalendar.defaults, options);
 
         function lpad(value, length, pad) {
@@ -32,13 +33,32 @@
             return (p + value).slice(-length);
         }
 
+        //鼠标悬停上一个/下一个
         var mouseOver = function () {
             $(this).addClass('c-nav-btn-over');
         };
+        //鼠标离开上一个/下一个
         var mouseLeave = function () {
             $(this).removeClass('c-nav-btn-over');
         };
+        //鼠标点击日期，可以进行编辑操作
+        var mouseClickEvent = function () {
+            //创建一个层，可以对备忘录事件进行增删改
+            
+            var event_ids=$(this).attr('event-ids').split(',')
+            console.log(event_ids);
+            for(var i=0;i<event_ids.length;i++){
+                for(var j=0;j<settings.events.length; j++){
+                    if(event_ids[i]==settings.events[j].memo_id){
+                        console.log(settings.events[j])
+                    }
+                }
+            }
+            //console.log($(this))
+        };
+        //鼠标悬停在日期上
         var mouseOverEvent = function () {
+            //console.log(111)
             $(this).addClass('c-event-over');
             var d = $(this).attr('data-event-day');
             let eventItem = $('div.c-event-item[data-event-day="' + d + '"]');
@@ -57,6 +77,7 @@
             eventGridEle.animate({width : '300px' }, 200, function() {
             });
         };
+        //鼠标离开日期
         var mouseLeaveEvent = function () {
             $(this).removeClass('c-event-over')
             var d = $(this).attr('data-event-day');
@@ -103,30 +124,44 @@
         };
 
         function loadEvents() {
+            //console.log('加载备忘录数据')
+            //console.log(dYear,dMonth)
+            //请求中戴上年和月，方便筛选数据
             if (typeof settings.url != 'undefined' && settings.url != '') {
-                $.ajax({url: settings.url,
+                $.ajax({url: settings.url+'?year='+dYear+'&month='+(dMonth+1),
                     async: false,
                     success: function (result) {
                         settings.events = result;
+                    },
+                    error:function(){
+                        settings.events = [];
                     }
                 });
             }
         }
 
+        //绘制日历
         function print() {
+            //加载备忘录数据
             loadEvents();
+            //当月第一天是这个星期的第几天
             var dWeekDayOfMonthStart = new Date(dYear, dMonth, 1).getDay() - settings.firstDayOfWeek;
             if (dWeekDayOfMonthStart < 0) {
                 dWeekDayOfMonthStart = 6 - ((dWeekDayOfMonthStart + 1) * -1);
             }
+            //当月最后一天是这个月的第几天=当月有多少天
             var dLastDayOfMonth = new Date(dYear, dMonth + 1, 0).getDate();
+            //
             var dLastDayOfPreviousMonth = new Date(dYear, dMonth, 0).getDate() - dWeekDayOfMonthStart + 1;
-
+            //日历框
             var cBody = $('<div/>').addClass('c-grid').css('width', '300px');//指定宽度避免面板被压缩
+            //日历备忘录框 初始化时隐藏
             var cEvents = $('<div/>').addClass('c-event-grid').css('width', '0px').css('display', 'none');//初始化隐藏
             var cEventsBody = $('<div/>').addClass('c-event-body');
+            //添加备忘录框title
             cEvents.append($('<div/>').addClass('c-event-title c-pad-top').html(settings.eventTitle));
             cEvents.append(cEventsBody);
+            //日历框的顶部三个元素
             var cNext = $('<div/>').addClass('c-next c-grid-title c-pad-top');
             var cMonth = $('<div/>').addClass('c-month c-grid-title c-pad-top');
             var cPrevious = $('<div/>').addClass('c-previous c-grid-title c-pad-top');
@@ -134,13 +169,15 @@
             cMonth.html(settings.months[dMonth] + ' ' + dYear);
             cNext.html(settings.textArrows.next);
 
+            //上一个/下一个 悬停/离开/点击时间绑定
             cPrevious.on('mouseover', mouseOver).on('mouseleave', mouseLeave).on('click', previousMonth);
             cNext.on('mouseover', mouseOver).on('mouseleave', mouseLeave).on('click', nextMonth);
-
+            //日历框添加这三个元素
             cBody.append(cPrevious);
             cBody.append(cMonth);
             cBody.append(cNext);
             var dayOfWeek = settings.firstDayOfWeek;
+            //加入顶部周的信息
             for (var i = 0; i < 7; i++) {
                 if (dayOfWeek > 6) {
                     dayOfWeek = 0;
@@ -152,15 +189,18 @@
             }
             var day = 1;
             var dayOfNextMonth = 1;
+            //绘制6X7天（6周 42天的日期框）
             for (var i = 0; i < 42; i++) {
                 var cDay = $('<div/>');
-                if (i < dWeekDayOfMonthStart) {
+                if (i < dWeekDayOfMonthStart) {//表示上个月的日期
                     cDay.addClass('c-day-previous-month c-pad-top');
                     cDay.html(dLastDayOfPreviousMonth++);
-                } else if (day <= dLastDayOfMonth) {
-                    cDay.addClass('c-pad-top');
+                } else if (day <= dLastDayOfMonth) {//表示当月的日期
+                    cDay.addClass('c-pad-top can-click').attr('date',dYear+'-'+(dMonth+1)+'-'+day).attr('event-ids','');
+                    //添加所有日期的点击效果
+                    cDay.on('click', mouseClickEvent);
                     if (day == dDay && adMonth == dMonth && adYear == dYear) {
-                        cDay.addClass('c-day').addClass('c-today').attr('title', '今天');
+                        cDay.addClass('c-day').addClass('c-today').attr('title', '今天');//给今天加上class
                     }else if (dMonth <= month_now && dYear == year_now){//本年内日期判断是否本日之前
                         if(day < dDay && dMonth == month_now){
                             cDay.addClass('c-previous-day');
@@ -182,14 +222,24 @@
                     }else if(dYear > year_now){//判断是否之后的年份
                         cDay.addClass('c-next-day');
                     }
-
+                    
+                    //添加事件渲染效果
+                    var event_ids = '';
+                    //console.log(settings.events)
                     for (var j = 0; j < settings.events.length; j++) {
-                        var d = settings.events[j].datetime;
+                        //var d = settings.events[j].datetime;
+                        //此处修改为 使用字符串式时间
+                        var d = new Date(Date.parse(settings.events[j].period));
+                        //var f = new Date(Date.parse(settings.events[j].period))
+                        //console.log(d)
+                        //console.log(f)
                         if (d.getDate() == day && d.getMonth() == dMonth && d.getFullYear() == dYear) {
                             cDay.addClass('c-event').attr('data-event-day', d.getDate());
+                            event_ids += settings.events[j].memo_id+',';
                             cDay.on('mouseover', mouseOverEvent).on('mouseleave', mouseLeaveEvent);
                         }
                     }
+                    cDay.attr('event-ids',event_ids.substr(0,event_ids.length-1));
                     cDay.html('<span style="display: inline-block; width: 30px; height: 30px; line-height: 30px; position: relative; bottom: 7px;">' + (day++) + '</span>');
                 } else {
                     cDay.addClass('c-day-next-month c-pad-top');
@@ -199,9 +249,13 @@
             }
             var eventList = $('<div/>').addClass('c-event-list');
             for (var i = 0; i < settings.events.length; i++) {
-                var d = settings.events[i].datetime;
+                //var d = settings.events[i].datetime;
+                //此处 改为字符串时间
+                var d = new Date(Date.parse(settings.events[i].period));
                 if (d.getMonth() == dMonth && d.getFullYear() == dYear) {
-                    var date = lpad(d.getDate(), 2) + '/' + lpad(d.getMonth() + 1, 2) + ' ' + lpad(d.getHours(), 2) + ':' + lpad(d.getMinutes(), 2);
+                    //var date = lpad(d.getDate(), 2) + '/' + lpad(d.getMonth() + 1, 2) + ' ' + lpad(d.getHours(), 2) + ':' + lpad(d.getMinutes(), 2);
+                    //修改日期显示样式
+                    var date = lpad(d.getMonth() + 1, 2) + '月' + lpad(d.getDate(), 2) + '日 ' + lpad(d.getHours(), 2) + ':' + lpad(d.getMinutes(), 2);
                     var item = $('<div/>').addClass('c-event-item');
                     var title = $('<div/>').addClass('title').html(date + '  ' + settings.events[i].title + '<br/>');
                     var description = $('<div/>').addClass('description').html(settings.events[i].description + '<br/>');
